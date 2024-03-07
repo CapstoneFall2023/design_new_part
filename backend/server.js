@@ -216,8 +216,10 @@ app.post("/login", async (req, res) => {
 // SMART CONTRACT PART
 app.post("/createWallet", async (req, res) => {
   try {
-    const { nid, merkleRoot } = req.body;
-    const tx = await createWallet(nid, merkleRoot);
+    const { nidNumber } = req.body;
+    const walletAddresses = await getAllWallets();
+    const { root, tree } = createMerkleTree(walletAddresses);
+    const tx = await createWallet(nidNumber, bufferToHex(root));
     console.log(tx);
     res.status(201).json({ message: "Wallet created successfully" });
   } catch (error) {
