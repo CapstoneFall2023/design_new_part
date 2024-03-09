@@ -10,7 +10,6 @@ import UserDetails from "./pages/UserDetails";
 import Approved from "./pages/Approved";
 import My from "./pages/My";
 
-// import Data from "./components/Data";
 function App() {
   const isUserSignedIn = !!localStorage.getItem("token");
   return (
