@@ -227,12 +227,11 @@ app.post("/createWallet", async (req, res) => {
   }
 });
 
-app.get("/getWalletAddress", async (req, res) => {
+app.post("/getWalletAddress", async (req, res) => {
   try {
     const { nidNumber } = req.body;
     const walletAddress = await getWalletAddress(nidNumber); // replace with nid
-    console.log({ walletAddress });
-    res.status(201).json(walletAddress);
+    res.status(200).json({ walletAddress: walletAddress });
   } catch (error) {
     res.status(500).json({ error: "Unable to get wallet address" });
   }
