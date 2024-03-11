@@ -12,12 +12,13 @@ function ImageUpload() {
 
   const storeKYCData = async (ipfsHash) => {
     try {
-      const nid = "1234"; // original nid data
+      const nid = localStorage.getItem("nidNumber") || "1234";
       const response = await axios.post(`http://localhost:3001/submitKYC`, {
         ipfsHash,
         nid,
       });
       console.log("KYC Data Submitted Successfully:", response.data);
+      console.log("KYC User NID Number:", nid);
     } catch (error) {
       console.error("Error submitting KYC data:", error);
     }

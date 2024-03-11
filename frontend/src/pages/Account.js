@@ -2,9 +2,18 @@ import React from "react";
 
 function Account() {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500 text-white">
-      <h2 className="text-6xl font-bold mb-4">ACCOUNT</h2>
-      <p className="text-xl text-gray-200">Welcome to your account page!</p>
+    <div className="bg-white rounded-lg py-5">
+      <div className="container flex flex-col mx-auto bg-white rounded-lg pt-12 my-5">
+        <div class="flex justify-center w-full h-full my-auto xl:gap-14 lg:justify-normal md:gap-5 draggable">
+          <div class="flex items-center justify-center w-full lg:p-12">
+            <div class="flex items-center xl:p-10">
+              <h1 class="mb-12 text-4xl font-extrabold text-dark-grey-900">
+                Account
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

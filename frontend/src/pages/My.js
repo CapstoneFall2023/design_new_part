@@ -7,12 +7,13 @@ function EthereumAddressInput() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const nid = "1234"; // original nid data
+      const nid = localStorage.getItem("nidNumber") || "1234";
       const response = await axios.post(`http://localhost:3001/grantVerifier`, {
         verifier,
         nid,
       });
       console.log("KYC Approved Successfully:", response.data);
+      console.log("KYC User NID Number:", nid);
       console.log("Submitted Ethereum Address:", verifier);
       setVerifier("");
     } catch (error) {

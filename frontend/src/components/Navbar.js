@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const isUserSignedIn = !!localStorage.getItem("token");
+  const isKycSubmitted = !!localStorage.getItem("access");
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -33,12 +34,16 @@ function Navbar() {
                   <Link to="/kyc">
                     <li className="hover:underline">KYC</li>
                   </Link>
-                  <Link to="/approved">
-                    <li className="hover:underline">Update KYC</li>
-                  </Link>
-                  <Link to="/my">
-                    <li className="hover:underline">My KYC</li>
-                  </Link>
+                  {isKycSubmitted && (
+                    <>
+                      <Link to="/approved">
+                        <li className="hover:underline">Update KYC</li>
+                      </Link>
+                      <Link to="/my">
+                        <li className="hover:underline">My KYC</li>
+                      </Link>
+                    </>
+                  )}
                   <li>
                     <button
                       onClick={handleSignOut}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-// Import the useNavigate hook from react-router-dom
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -33,6 +32,9 @@ function Kyc() {
         setFullNameEnglish("");
         setFullNameBangla("");
         setDateOfBirth("");
+        const access = response.data.access;
+        localStorage.setItem("access", access);
+        localStorage.setItem("nidNumber", nidNumber);
         navigate(`/user/${nidNumber}`);
       })
       .catch((error) => {
