@@ -5,14 +5,15 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 // Initialize IPFS HTTP client
-const ipfs = create({ url: "http://127.0.0.1:5001" });
+const ipfs = create({ url: "http://localhost:5001" });
 function ImageUpload() {
   const [frontImage, setFrontImage] = useState(null);
   const [backImage, setBackImage] = useState(null);
 
   const storeKYCData = async (ipfsHash) => {
     try {
-      const nid = localStorage.getItem("nidNumber") || "1234";
+      const nid = localStorage.getItem("nidNumber");
+      console.log("NID Number:", nid);
       const response = await axios.post(`http://localhost:3001/submitKYC`, {
         ipfsHash,
         nid,

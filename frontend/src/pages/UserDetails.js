@@ -45,18 +45,11 @@ function UserDetails() {
 
   const getKYCWallet = async () => {
     try {
-      const root = await axios.get(`http://localhost:3001/generateTree`);
-      // const root = "0x4f9029d5982c35730a4d8e22b48c756b84384880e4a48fa88859a28e95f9e0ad";
       console.log(nidNumber);
       if (nidNumber) {
         console.log(nidNumber);
         const response = await axios.post(
-          `http://localhost:3001/createWallet`,
-          {
-            nid: nidNumber,
-            merkleRoot: root,
-          }
-        );
+          `http://localhost:3001/createWallet`, { nidNumber });
         console.log(response.data);
         Swal.fire({
           title: "Success",

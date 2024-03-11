@@ -7,10 +7,10 @@ function EthereumAddressInput() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const nid = localStorage.getItem("nidNumber") || "1234";
+      const nid = localStorage.getItem("nidNumber");
       const response = await axios.post(`http://localhost:3001/grantVerifier`, {
         verifier,
-        nid,
+        nid
       });
       console.log("KYC Approved Successfully:", response.data);
       console.log("KYC User NID Number:", nid);
@@ -24,12 +24,12 @@ function EthereumAddressInput() {
   const handleRevoke = async (e) => {
     e.preventDefault();
     try {
-      const nid = "1234"; // original nid data
+      const nid = localStorage.getItem("nidNumber");
       const response = await axios.post(
         `http://localhost:3001/revokeVerifier`,
         {
           verifier,
-          nid,
+          nid
         }
       );
       console.log("KYC Revoked Successfully:", response.data);
