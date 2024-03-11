@@ -229,8 +229,8 @@ app.post("/createWallet", async (req, res) => {
 
 app.get("/getWalletAddress", async (req, res) => {
   try {
-    const { nid } = req.body;
-    const walletAddress = await getWalletAddress("1234"); // replace with nid
+    const { nidNumber } = req.body;
+    const walletAddress = await getWalletAddress(nidNumber); // replace with nid
     console.log({ walletAddress });
     res.status(201).json(walletAddress);
   } catch (error) {
@@ -262,7 +262,8 @@ app.get("/generateProof", async (req, res) => {
 
 app.get("/getData", async (req, res) => {
   try {
-    const address = await getWalletAddress("1234");
+    const { nidNumber } = req.body;
+    const address = await getWalletAddress(nidNumber);
     const walletAddresses = await getAllWallets();
     const { root, tree } = createMerkleTree(walletAddresses);
     const proof = generateProof(tree, address[0].toLowerCase()).map(bufferToHex);
