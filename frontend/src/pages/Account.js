@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Account() {
   const [walletAddress, setWalletAddress] = useState("");
+  const [nid, setNID] = useState("");
 
   useEffect(() => {
     getWalletAddress();
@@ -14,6 +15,7 @@ function Account() {
       const nidNumber = localStorage.getItem("nidNumber");
       // console.log("NID Number before:", nidNumber);
       if (nidNumber) {
+        setNID(nidNumber);
         console.log("NID Number: after", nidNumber);
         const response = await axios.post(`http://localhost:3001/getWalletAddress`, {
           nidNumber: nidNumber,
@@ -36,6 +38,7 @@ function Account() {
               <h1 class="mb-12 text-4xl font-extrabold text-dark-grey-900">
                 Account
               </h1>
+              <p className="font-bold">Your NID: <span className="font-normal">{nid}</span></p>
               <p className="font-bold">Your wallet Address: <span className="font-normal">{walletAddress}</span></p>
             </div>
           </div>
